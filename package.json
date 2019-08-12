@@ -1,0 +1,26 @@
+{
+    "name": "stablepayjs",
+    "version": "0.0.1",
+    "description": "StablePay JavaScript Library",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "bili",
+        "prepublishOnly": "npm run build"
+    },
+    "author": "stablepay.io",
+    "license": "MIT",
+    "devDependencies": {
+        "bili": "^4.8.1",
+        "prettier": "^1.18.2",
+        "rollup-plugin-typescript2": "^0.22.1",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^3.5.3"
+    },
+    "dependencies": {}
+}
