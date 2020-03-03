@@ -24,6 +24,8 @@
         "typescript": "^3.5.3"
     },
     "dependencies": {
-        "lodash": "^4.17.15"
+        "ethers": "^4.0.45",
+        "lodash": "^4.17.15",
+        "yup": "^0.28.1"
     }
 }
