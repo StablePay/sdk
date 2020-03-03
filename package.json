@@ -15,6 +15,7 @@
     "author": "stablepay.io",
     "license": "MIT",
     "devDependencies": {
+        "@types/lodash": "^4.14.149",
         "bili": "^4.8.1",
         "prettier": "^1.18.2",
         "rollup-plugin-typescript2": "^0.22.1",
@@ -22,5 +23,7 @@
         "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.5.3"
     },
-    "dependencies": {}
+    "dependencies": {
+        "lodash": "^4.17.15"
+    }
 }
