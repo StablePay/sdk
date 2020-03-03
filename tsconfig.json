@@ -5,25 +5,25 @@
         "declaration": true,
         "strict": true,
         "noImplicitAny": true,
-        "esModuleInterop": true
-    },
-    "baseUrl": "src",
-    "paths": {
-        "@repositories": ["app/repositories"],
-        "@repositories/*": ["app/repositories/*"],
-        "@useCases/*": ["app/useCases/*"],
-        "@config": ["config"],
-        "@config/*": ["config/*"],
-        "@core": ["core"],
-        "@core/*": ["core/*"],
-        "@domain/*": ["domain/*"],
-        "@entities": ["domain/models/entities"],
-        "@entities/*": ["domain/models/entities/*"],
-        "@valueObjects": ["domain/models/valueObjects"],
-        "@valueObjects/*": ["domain/models/valueObjects/*"],
-        "@services": ["domain/services"],
-        "@services/*": ["domain/services/*"],
-        "@utils": ["utils"],
-        "@utils/*": ["utils/*"]
+        "esModuleInterop": true,
+        "baseUrl": "src",
+        "paths": {
+            "@repositories": ["app/repositories"],
+            "@repositories/*": ["app/repositories/*"],
+            "@useCases/*": ["app/useCases/*"],
+            "@config": ["config"],
+            "@config/*": ["config/*"],
+            "@core": ["core"],
+            "@core/*": ["core/*"],
+            "@domain/*": ["domain/*"],
+            "@entities": ["domain/models/entities"],
+            "@entities/*": ["domain/models/entities/*"],
+            "@valueObjects": ["domain/models/valueObjects"],
+            "@valueObjects/*": ["domain/models/valueObjects/*"],
+            "@services": ["domain/services"],
+            "@services/*": ["domain/services/*"],
+            "@utils": ["utils"],
+            "@utils/*": ["utils/*"]
+        }
     }
 }
