@@ -8,6 +8,8 @@
         "esModuleInterop": true,
         "baseUrl": "src",
         "paths": {
+            "@controllers": ["adapters/controllers"],
+            "@controllers/*": ["adapters/controllers/*"],
             "@repositories": ["app/repositories"],
             "@repositories/*": ["app/repositories/*"],
             "@useCases/*": ["app/useCases/*"],
@@ -18,6 +20,8 @@
             "@domain/*": ["domain/*"],
             "@entities": ["domain/models/entities"],
             "@entities/*": ["domain/models/entities/*"],
+            "@types": ["domain/models/types"],
+            "@types/*": ["domain/models/types/*"],
             "@valueObjects": ["domain/models/valueObjects"],
             "@valueObjects/*": ["domain/models/valueObjects/*"],
             "@services": ["domain/services"],
