@@ -1,0 +1,2556 @@
+{
+  "contractName": "IStablePay",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "thisContract",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "providerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "sourceToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "targetToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "providerKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "ExecutionTransferFailed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "providerKey",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "sourceToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "targetToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "fromAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "toAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "feeAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "platformFee",
+          "type": "uint16"
+        },
+        {
+          "indexed": false,
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "ExecutionTransferSuccess",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "thisContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "DepositReceived",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "thisContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "sourceToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "targetToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "PaymentSent",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "name": "sourceAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "targetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "makerAssetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "takerAssetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "makerFee",
+              "type": "uint256"
+            },
+            {
+              "name": "takerFee",
+              "type": "uint256"
+            },
+            {
+              "name": "expirationTimeSeconds",
+              "type": "uint256"
+            },
+            {
+              "name": "salt",
+              "type": "uint256"
+            },
+            {
+              "name": "minRate",
+              "type": "uint256"
+            },
+            {
+              "name": "maxRate",
+              "type": "uint256"
+            },
+            {
+              "name": "sourceToken",
+              "type": "address"
+            },
+            {
+              "name": "targetToken",
+              "type": "address"
+            },
+            {
+              "name": "toAddress",
+              "type": "address"
+            },
+            {
+              "name": "fromAddress",
+              "type": "address"
+            },
+            {
+              "name": "makerAddress",
+              "type": "address"
+            },
+            {
+              "name": "takerAddress",
+              "type": "address"
+            },
+            {
+              "name": "feeRecipientAddress",
+              "type": "address"
+            },
+            {
+              "name": "senderAddress",
+              "type": "address"
+            },
+            {
+              "name": "postActionAddress",
+              "type": "address"
+            },
+            {
+              "name": "signature",
+              "type": "bytes"
+            },
+            {
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "name": "makerAssetData",
+              "type": "bytes"
+            },
+            {
+              "name": "takerAssetData",
+              "type": "bytes"
+            }
+          ],
+          "name": "order",
+          "type": "tuple"
+        },
+        {
+          "name": "providerKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "transferWithTokens",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "name": "sourceAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "targetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "makerAssetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "takerAssetAmount",
+              "type": "uint256"
+            },
+            {
+              "name": "makerFee",
+              "type": "uint256"
+            },
+            {
+              "name": "takerFee",
+              "type": "uint256"
+            },
+            {
+              "name": "expirationTimeSeconds",
+              "type": "uint256"
+            },
+            {
+              "name": "salt",
+              "type": "uint256"
+            },
+            {
+              "name": "minRate",
+              "type": "uint256"
+            },
+            {
+              "name": "maxRate",
+              "type": "uint256"
+            },
+            {
+              "name": "sourceToken",
+              "type": "address"
+            },
+            {
+              "name": "targetToken",
+              "type": "address"
+            },
+            {
+              "name": "toAddress",
+              "type": "address"
+            },
+            {
+              "name": "fromAddress",
+              "type": "address"
+            },
+            {
+              "name": "makerAddress",
+              "type": "address"
+            },
+            {
+              "name": "takerAddress",
+              "type": "address"
+            },
+            {
+              "name": "feeRecipientAddress",
+              "type": "address"
+            },
+            {
+              "name": "senderAddress",
+              "type": "address"
+            },
+            {
+              "name": "postActionAddress",
+              "type": "address"
+            },
+            {
+              "name": "signature",
+              "type": "bytes"
+            },
+            {
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "name": "makerAssetData",
+              "type": "bytes"
+            },
+            {
+              "name": "takerAssetData",
+              "type": "bytes"
+            }
+          ],
+          "name": "order",
+          "type": "tuple"
+        },
+        {
+          "name": "providerKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "transferWithEthers",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.10+commit.5a6ea5b1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"components\":[{\"name\":\"sourceAmount\",\"type\":\"uint256\"},{\"name\":\"targetAmount\",\"type\":\"uint256\"},{\"name\":\"makerAssetAmount\",\"type\":\"uint256\"},{\"name\":\"takerAssetAmount\",\"type\":\"uint256\"},{\"name\":\"makerFee\",\"type\":\"uint256\"},{\"name\":\"takerFee\",\"type\":\"uint256\"},{\"name\":\"expirationTimeSeconds\",\"type\":\"uint256\"},{\"name\":\"salt\",\"type\":\"uint256\"},{\"name\":\"minRate\",\"type\":\"uint256\"},{\"name\":\"maxRate\",\"type\":\"uint256\"},{\"name\":\"sourceToken\",\"type\":\"address\"},{\"name\":\"targetToken\",\"type\":\"address\"},{\"name\":\"toAddress\",\"type\":\"address\"},{\"name\":\"fromAddress\",\"type\":\"address\"},{\"name\":\"makerAddress\",\"type\":\"address\"},{\"name\":\"takerAddress\",\"type\":\"address\"},{\"name\":\"feeRecipientAddress\",\"type\":\"address\"},{\"name\":\"senderAddress\",\"type\":\"address\"},{\"name\":\"postActionAddress\",\"type\":\"address\"},{\"name\":\"signature\",\"type\":\"bytes\"},{\"name\":\"data\",\"type\":\"bytes\"},{\"name\":\"makerAssetData\",\"type\":\"bytes\"},{\"name\":\"takerAssetData\",\"type\":\"bytes\"}],\"name\":\"order\",\"type\":\"tuple\"},{\"name\":\"providerKey\",\"type\":\"bytes32\"}],\"name\":\"transferWithEthers\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"components\":[{\"name\":\"sourceAmount\",\"type\":\"uint256\"},{\"name\":\"targetAmount\",\"type\":\"uint256\"},{\"name\":\"makerAssetAmount\",\"type\":\"uint256\"},{\"name\":\"takerAssetAmount\",\"type\":\"uint256\"},{\"name\":\"makerFee\",\"type\":\"uint256\"},{\"name\":\"takerFee\",\"type\":\"uint256\"},{\"name\":\"expirationTimeSeconds\",\"type\":\"uint256\"},{\"name\":\"salt\",\"type\":\"uint256\"},{\"name\":\"minRate\",\"type\":\"uint256\"},{\"name\":\"maxRate\",\"type\":\"uint256\"},{\"name\":\"sourceToken\",\"type\":\"address\"},{\"name\":\"targetToken\",\"type\":\"address\"},{\"name\":\"toAddress\",\"type\":\"address\"},{\"name\":\"fromAddress\",\"type\":\"address\"},{\"name\":\"makerAddress\",\"type\":\"address\"},{\"name\":\"takerAddress\",\"type\":\"address\"},{\"name\":\"feeRecipientAddress\",\"type\":\"address\"},{\"name\":\"senderAddress\",\"type\":\"address\"},{\"name\":\"postActionAddress\",\"type\":\"address\"},{\"name\":\"signature\",\"type\":\"bytes\"},{\"name\":\"data\",\"type\":\"bytes\"},{\"name\":\"makerAssetData\",\"type\":\"bytes\"},{\"name\":\"takerAssetData\",\"type\":\"bytes\"}],\"name\":\"order\",\"type\":\"tuple\"},{\"name\":\"providerKey\",\"type\":\"bytes32\"}],\"name\":\"transferWithTokens\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"thisContract\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"providerAddress\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"sourceToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"targetToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"timestamp\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"providerKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"ExecutionTransferFailed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"providerKey\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"sourceToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"targetToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"fromAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"toAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"feeAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"platformFee\",\"type\":\"uint16\"},{\"indexed\":false,\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"ExecutionTransferSuccess\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"thisContract\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"DepositReceived\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"thisContract\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"sourceToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"targetToken\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"PaymentSent\",\"type\":\"event\"}],\"devdoc\":{\"author\":\"StablePay <hi@stablepay.io>\",\"details\":\"It defines the functions to swap and transfer any token (ERC20) or Ether into any pre-configured token (ERC20).As StablePay doesn't use its own liquidity to swap tokens/ether, StablePay supports swap any token if at least one registered swapping provider supports it.\",\"methods\":{\"transferWithEthers((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)\":{\"details\":\"StablePay uses each swapping provider ordered in the keys provided as input to attempt the swapping/exchange ether/tokens.The provider keys list must be not empty in order to swap the tokens.\",\"params\":{\"order\":\"order instance which defines the data needed to make the swap (ether to token) and transfer.\",\"providerKey\":\"provider key to be used as liquidity providers in the swapping process.\"}},\"transferWithTokens((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)\":{\"details\":\"If the source and target tokens are the same, StablePay only transfers the amount of tokens defined in the order.Otherwise, StablePay uses each swapping provider ordered in the keys provided as input.The provider keys list must be not empty in order to swap the tokens.\",\"params\":{\"order\":\"order instance which defines the data needed to make the transfer and swap if needed.\",\"providerKey\":\"provider key to be used as liquidity providers in the swapping process.\"}}}},\"userdoc\":{\"methods\":{\"transferWithEthers((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)\":{\"notice\":\"It swaps and transfers a specific amount of ether (defined in the order and msg.value parameter) to a specific amount of tokens and finally transfers it to a receiver address.\"},\"transferWithTokens((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)\":{\"notice\":\"It transfers (and swaps if needed) a specific amount of tokens (defined in the order) to a specific receiver.\"}},\"notice\":\"This is the entry point to interact with the StablePay platform.\"}},\"settings\":{\"compilationTarget\":{\"/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/interface/IStablePay.sol\":\"IStablePay\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/interface/IStablePay.sol\":{\"keccak256\":\"0x44e194756e7a1953dc319e2c423553a6331b28d3c7ea53364d3aae29f78f3f53\",\"urls\":[\"bzzr://0ff7492df68d2921093282cca92d71eaf5f75d90859d5d073960b2dd103ed1d6\",\"dweb:/ipfs/QmRmt9FWmB1fowCYvqgsTHN7jQNYiv7YHrAr4Lxsbgu6HT\"]},\"/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/util/StablePayCommon.sol\":{\"keccak256\":\"0x92c68a7edff07472d51bff6319f0587df46e6736d200e40cbb9bb2045ac1dac4\",\"urls\":[\"bzzr://554396f326579097adabf8d4aafaada541e6442b7e4c916a1bd8a607982cf231\",\"dweb:/ipfs/QmPAtzVRUShn7T3SasQoei9XSv6WU9Xz5Y8cccpQcRrGbP\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.10;\npragma experimental ABIEncoderV2;\n\nimport \"../util/StablePayCommon.sol\";\n\n/**\n    @notice This is the entry point to interact with the StablePay platform.\n    @dev It defines the functions to swap and transfer any token (ERC20) or Ether into any pre-configured token (ERC20).\n    @dev As StablePay doesn't use its own liquidity to swap tokens/ether, StablePay supports swap any token if at least one registered swapping provider supports it.\n\n    @author StablePay <hi@stablepay.io>\n */\ncontract IStablePay {\n    /** Events */\n\n    /**\n        @dev This event is emitted when a swap execution has failed.\n     */\n    event ExecutionTransferFailed(\n        address indexed thisContract,\n        address indexed providerAddress,\n        address sourceToken,\n        address targetToken,\n        address from,\n        address to,\n        uint256 timestamp,\n        bytes32 providerKey,\n        bytes data\n    );\n\n    /**\n        @dev This event is emitted when a swap has been executed successfully.\n     */\n    event ExecutionTransferSuccess(\n        bytes32 indexed providerKey,\n        address sourceToken,\n        address targetToken,\n        address from,\n        address to,\n        uint256 fromAmount,\n        uint256 toAmount,\n        uint256 feeAmount,\n        uint16 platformFee,\n        bytes data\n    );\n\n    /**\n        @dev This event is emitted when a deposit is received.\n     */\n    event DepositReceived(\n        address indexed thisContract,\n        address from,\n        uint256 amount\n    );\n\n    /**\n        @dev This event is emitted when a new payment is sent to an address.\n     */\n    event PaymentSent(\n        address indexed thisContract,\n        address to,\n        address from,\n        address sourceToken,\n        address targetToken,\n        uint256 amount\n    );\n\n    /** Functions */\n\n    /**\n        @notice It transfers (and swaps if needed) a specific amount of tokens (defined in the order) to a specific receiver.\n        @dev If the source and target tokens are the same, StablePay only transfers the amount of tokens defined in the order.\n        @dev Otherwise, StablePay uses each swapping provider ordered in the keys provided as input.\n        @dev The provider keys list must be not empty in order to swap the tokens.\n\n        @param order order instance which defines the data needed to make the transfer and swap if needed.\n        @param providerKey provider key to be used as liquidity providers in the swapping process.\n     */\n    function transferWithTokens(\n        StablePayCommon.Order memory order,\n        bytes32 providerKey\n    ) public;\n\n    /**\n        @notice It swaps and transfers a specific amount of ether (defined in the order and msg.value parameter) to a specific amount of tokens and finally transfers it to a receiver address.\n        @dev StablePay uses each swapping provider ordered in the keys provided as input to attempt the swapping/exchange ether/tokens.\n        @dev The provider keys list must be not empty in order to swap the tokens.\n\n        @param order order instance which defines the data needed to make the swap (ether to token) and transfer.\n        @param providerKey provider key to be used as liquidity providers in the swapping process.\n     */\n    function transferWithEthers(\n        StablePayCommon.Order memory order,\n        bytes32 providerKey\n    ) public payable;\n}\n",
+  "sourcePath": "/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/interface/IStablePay.sol",
+  "ast": {
+    "absolutePath": "/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/interface/IStablePay.sol",
+    "exportedSymbols": {
+      "IStablePay": [
+        5955
+      ]
+    },
+    "id": 5956,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5874,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".10"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:29"
+      },
+      {
+        "id": 5875,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "24:33:29"
+      },
+      {
+        "absolutePath": "/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/util/StablePayCommon.sol",
+        "file": "../util/StablePayCommon.sol",
+        "id": 5876,
+        "nodeType": "ImportDirective",
+        "scope": 5956,
+        "sourceUnit": 11004,
+        "src": "59:37:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@notice This is the entry point to interact with the StablePay platform.\n@dev It defines the functions to swap and transfer any token (ERC20) or Ether into any pre-configured token (ERC20).\n@dev As StablePay doesn't use its own liquidity to swap tokens/ether, StablePay supports swap any token if at least one registered swapping provider supports it.\n@author StablePay <hi@stablepay.io>",
+        "fullyImplemented": false,
+        "id": 5955,
+        "linearizedBaseContracts": [
+          5955
+        ],
+        "name": "IStablePay",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a swap execution has failed.",
+            "id": 5896,
+            "name": "ExecutionTransferFailed",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5895,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5878,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "680:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5877,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5880,
+                  "indexed": true,
+                  "name": "providerAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "718:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5879,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "718:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5882,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "759:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5881,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "759:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5884,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "788:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5883,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "788:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5886,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "817:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5885,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "817:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5888,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "839:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5887,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "839:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5890,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "859:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5889,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "859:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5892,
+                  "indexed": false,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "886:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5891,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "886:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5894,
+                  "indexed": false,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "915:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 5893,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "915:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "670:261:29"
+            },
+            "src": "641:291:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a swap has been executed successfully.",
+            "id": 5918,
+            "name": "ExecutionTransferSuccess",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5917,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5898,
+                  "indexed": true,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1073:27:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5897,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1073:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5900,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1110:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5899,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1110:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5902,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1139:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5901,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1139:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5904,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1168:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5903,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1168:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5906,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1190:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5905,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1190:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5908,
+                  "indexed": false,
+                  "name": "fromAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1210:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5907,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1210:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5910,
+                  "indexed": false,
+                  "name": "toAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1238:16:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5909,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1238:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5912,
+                  "indexed": false,
+                  "name": "feeAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1264:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5911,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1264:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5914,
+                  "indexed": false,
+                  "name": "platformFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1291:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 5913,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1291:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5916,
+                  "indexed": false,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1319:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 5915,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1319:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:272:29"
+            },
+            "src": "1033:303:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a deposit is received.",
+            "id": 5926,
+            "name": "DepositReceived",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5925,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5920,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1452:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5919,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1452:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5922,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1490:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5921,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1490:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5924,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1512:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5923,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1512:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1442:90:29"
+            },
+            "src": "1421:112:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a new payment is sent to an address.",
+            "id": 5940,
+            "name": "PaymentSent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5939,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5928,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1659:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5927,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1659:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5930,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1697:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5929,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1697:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5932,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1717:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5931,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1717:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5934,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1739:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5933,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1739:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5936,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1768:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5935,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1768:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5938,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1797:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5937,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1797:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1649:168:29"
+            },
+            "src": "1632:186:29"
+          },
+          {
+            "body": null,
+            "documentation": "@notice It transfers (and swaps if needed) a specific amount of tokens (defined in the order) to a specific receiver.\n@dev If the source and target tokens are the same, StablePay only transfers the amount of tokens defined in the order.\n@dev Otherwise, StablePay uses each swapping provider ordered in the keys provided as input.\n@dev The provider keys list must be not empty in order to swap the tokens.\n@param order order instance which defines the data needed to make the transfer and swap if needed.\n@param providerKey provider key to be used as liquidity providers in the swapping process.",
+            "id": 5947,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferWithTokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5945,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5942,
+                  "name": "order",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5947,
+                  "src": "2543:34:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$10979_memory_ptr",
+                    "typeString": "struct StablePayCommon.Order"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5941,
+                    "name": "StablePayCommon.Order",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10979,
+                    "src": "2543:21:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$10979_storage_ptr",
+                      "typeString": "struct StablePayCommon.Order"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5944,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5947,
+                  "src": "2587:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5943,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2587:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2533:79:29"
+            },
+            "returnParameters": {
+              "id": 5946,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2619:0:29"
+            },
+            "scope": 5955,
+            "src": "2506:114:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@notice It swaps and transfers a specific amount of ether (defined in the order and msg.value parameter) to a specific amount of tokens and finally transfers it to a receiver address.\n@dev StablePay uses each swapping provider ordered in the keys provided as input to attempt the swapping/exchange ether/tokens.\n@dev The provider keys list must be not empty in order to swap the tokens.\n@param order order instance which defines the data needed to make the swap (ether to token) and transfer.\n@param providerKey provider key to be used as liquidity providers in the swapping process.",
+            "id": 5954,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferWithEthers",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5952,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5949,
+                  "name": "order",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5954,
+                  "src": "3304:34:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$10979_memory_ptr",
+                    "typeString": "struct StablePayCommon.Order"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5948,
+                    "name": "StablePayCommon.Order",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10979,
+                    "src": "3304:21:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$10979_storage_ptr",
+                      "typeString": "struct StablePayCommon.Order"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5951,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5954,
+                  "src": "3348:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5950,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3348:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3294:79:29"
+            },
+            "returnParameters": {
+              "id": 5953,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3388:0:29"
+            },
+            "scope": 5955,
+            "src": "3267:122:29",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 5956,
+        "src": "511:2880:29"
+      }
+    ],
+    "src": "0:3392:29"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/interface/IStablePay.sol",
+    "exportedSymbols": {
+      "IStablePay": [
+        5955
+      ]
+    },
+    "id": 5956,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5874,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".10"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:29"
+      },
+      {
+        "id": 5875,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "24:33:29"
+      },
+      {
+        "absolutePath": "/Users/guillesalazar/Repos/StablePay/SmartContracts/contracts/util/StablePayCommon.sol",
+        "file": "../util/StablePayCommon.sol",
+        "id": 5876,
+        "nodeType": "ImportDirective",
+        "scope": 5956,
+        "sourceUnit": 11004,
+        "src": "59:37:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@notice This is the entry point to interact with the StablePay platform.\n@dev It defines the functions to swap and transfer any token (ERC20) or Ether into any pre-configured token (ERC20).\n@dev As StablePay doesn't use its own liquidity to swap tokens/ether, StablePay supports swap any token if at least one registered swapping provider supports it.\n@author StablePay <hi@stablepay.io>",
+        "fullyImplemented": false,
+        "id": 5955,
+        "linearizedBaseContracts": [
+          5955
+        ],
+        "name": "IStablePay",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a swap execution has failed.",
+            "id": 5896,
+            "name": "ExecutionTransferFailed",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5895,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5878,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "680:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5877,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5880,
+                  "indexed": true,
+                  "name": "providerAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "718:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5879,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "718:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5882,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "759:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5881,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "759:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5884,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "788:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5883,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "788:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5886,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "817:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5885,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "817:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5888,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "839:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5887,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "839:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5890,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "859:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5889,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "859:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5892,
+                  "indexed": false,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "886:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5891,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "886:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5894,
+                  "indexed": false,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5896,
+                  "src": "915:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 5893,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "915:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "670:261:29"
+            },
+            "src": "641:291:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a swap has been executed successfully.",
+            "id": 5918,
+            "name": "ExecutionTransferSuccess",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5917,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5898,
+                  "indexed": true,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1073:27:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5897,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1073:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5900,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1110:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5899,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1110:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5902,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1139:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5901,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1139:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5904,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1168:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5903,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1168:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5906,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1190:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5905,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1190:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5908,
+                  "indexed": false,
+                  "name": "fromAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1210:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5907,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1210:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5910,
+                  "indexed": false,
+                  "name": "toAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1238:16:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5909,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1238:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5912,
+                  "indexed": false,
+                  "name": "feeAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1264:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5911,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1264:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5914,
+                  "indexed": false,
+                  "name": "platformFee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1291:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 5913,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1291:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5916,
+                  "indexed": false,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5918,
+                  "src": "1319:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 5915,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1319:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:272:29"
+            },
+            "src": "1033:303:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a deposit is received.",
+            "id": 5926,
+            "name": "DepositReceived",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5925,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5920,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1452:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5919,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1452:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5922,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1490:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5921,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1490:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5924,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5926,
+                  "src": "1512:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5923,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1512:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1442:90:29"
+            },
+            "src": "1421:112:29"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev This event is emitted when a new payment is sent to an address.",
+            "id": 5940,
+            "name": "PaymentSent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5939,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5928,
+                  "indexed": true,
+                  "name": "thisContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1659:28:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5927,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1659:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5930,
+                  "indexed": false,
+                  "name": "to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1697:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5929,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1697:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5932,
+                  "indexed": false,
+                  "name": "from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1717:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5931,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1717:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5934,
+                  "indexed": false,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1739:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5933,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1739:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5936,
+                  "indexed": false,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1768:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5935,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1768:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5938,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5940,
+                  "src": "1797:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5937,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1797:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1649:168:29"
+            },
+            "src": "1632:186:29"
+          },
+          {
+            "body": null,
+            "documentation": "@notice It transfers (and swaps if needed) a specific amount of tokens (defined in the order) to a specific receiver.\n@dev If the source and target tokens are the same, StablePay only transfers the amount of tokens defined in the order.\n@dev Otherwise, StablePay uses each swapping provider ordered in the keys provided as input.\n@dev The provider keys list must be not empty in order to swap the tokens.\n@param order order instance which defines the data needed to make the transfer and swap if needed.\n@param providerKey provider key to be used as liquidity providers in the swapping process.",
+            "id": 5947,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferWithTokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5945,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5942,
+                  "name": "order",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5947,
+                  "src": "2543:34:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$10979_memory_ptr",
+                    "typeString": "struct StablePayCommon.Order"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5941,
+                    "name": "StablePayCommon.Order",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10979,
+                    "src": "2543:21:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$10979_storage_ptr",
+                      "typeString": "struct StablePayCommon.Order"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5944,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5947,
+                  "src": "2587:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5943,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2587:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2533:79:29"
+            },
+            "returnParameters": {
+              "id": 5946,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2619:0:29"
+            },
+            "scope": 5955,
+            "src": "2506:114:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@notice It swaps and transfers a specific amount of ether (defined in the order and msg.value parameter) to a specific amount of tokens and finally transfers it to a receiver address.\n@dev StablePay uses each swapping provider ordered in the keys provided as input to attempt the swapping/exchange ether/tokens.\n@dev The provider keys list must be not empty in order to swap the tokens.\n@param order order instance which defines the data needed to make the swap (ether to token) and transfer.\n@param providerKey provider key to be used as liquidity providers in the swapping process.",
+            "id": 5954,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferWithEthers",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5952,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5949,
+                  "name": "order",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5954,
+                  "src": "3304:34:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Order_$10979_memory_ptr",
+                    "typeString": "struct StablePayCommon.Order"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5948,
+                    "name": "StablePayCommon.Order",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10979,
+                    "src": "3304:21:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Order_$10979_storage_ptr",
+                      "typeString": "struct StablePayCommon.Order"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5951,
+                  "name": "providerKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5954,
+                  "src": "3348:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5950,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3348:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3294:79:29"
+            },
+            "returnParameters": {
+              "id": 5953,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3388:0:29"
+            },
+            "scope": 5955,
+            "src": "3267:122:29",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 5956,
+        "src": "511:2880:29"
+      }
+    ],
+    "src": "0:3392:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.10+commit.5a6ea5b1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.11",
+  "updatedAt": "2019-10-30T03:23:00.426Z",
+  "devdoc": {
+    "author": "StablePay <hi@stablepay.io>",
+    "details": "It defines the functions to swap and transfer any token (ERC20) or Ether into any pre-configured token (ERC20).As StablePay doesn't use its own liquidity to swap tokens/ether, StablePay supports swap any token if at least one registered swapping provider supports it.",
+    "methods": {
+      "transferWithEthers((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)": {
+        "details": "StablePay uses each swapping provider ordered in the keys provided as input to attempt the swapping/exchange ether/tokens.The provider keys list must be not empty in order to swap the tokens.",
+        "params": {
+          "order": "order instance which defines the data needed to make the swap (ether to token) and transfer.",
+          "providerKey": "provider key to be used as liquidity providers in the swapping process."
+        }
+      },
+      "transferWithTokens((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)": {
+        "details": "If the source and target tokens are the same, StablePay only transfers the amount of tokens defined in the order.Otherwise, StablePay uses each swapping provider ordered in the keys provided as input.The provider keys list must be not empty in order to swap the tokens.",
+        "params": {
+          "order": "order instance which defines the data needed to make the transfer and swap if needed.",
+          "providerKey": "provider key to be used as liquidity providers in the swapping process."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "transferWithEthers((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)": {
+        "notice": "It swaps and transfers a specific amount of ether (defined in the order and msg.value parameter) to a specific amount of tokens and finally transfers it to a receiver address."
+      },
+      "transferWithTokens((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,address,address,address,address,address,address,address,address,address,bytes,bytes,bytes,bytes),bytes32)": {
+        "notice": "It transfers (and swaps if needed) a specific amount of tokens (defined in the order) to a specific receiver."
+      }
+    },
+    "notice": "This is the entry point to interact with the StablePay platform."
+  }
+}
