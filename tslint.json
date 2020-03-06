@@ -8,7 +8,8 @@
         "variable-name": false,
         "ordered-imports": false,
         "callable-types": false,
-        "curly": false
+        "curly": false,
+        "no-empty-interface": false
     },
     "rulesDirectory": []
 }
