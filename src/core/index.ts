@@ -1,4 +1,5 @@
 export * from './ApplicationError';
+export * from './Controller';
 export * from './Entity';
 export * from './ErrorTypes';
 export * from './Identifier';

@@ -1,9 +1,9 @@
 export abstract class Controller {
-    public success<T>(response: any) {
+    protected success<T>(response: any) {
         return response;
     }
 
-    public fail(error: Error) {
-        return { error: error.message };
+    protected fail(error: Error) {
+        return error;
     }
 }
