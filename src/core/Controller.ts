@@ -1,5 +1,5 @@
 export abstract class Controller {
-    protected success<T>(response: any) {
+    protected success(response: any) {
         return response;
     }
 

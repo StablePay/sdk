@@ -45,7 +45,7 @@ export class TokenController extends Controller {
         this.getTokenRate = new GetTokenRate(tokenRateImpl);
     }
 
-    public async supportedTokens({
+    public supportedTokens = async ({
         network
     }: {
         network: string;
@@ -57,7 +57,7 @@ export class TokenController extends Controller {
             decimals: number;
             imageSource: string;
         }>
-    > {
+    > => {
         try {
             const supportedTokens = await this.getSupportedTokens.execute(
                 SupportedTokensSerializer.toDomain({ network })
@@ -69,9 +69,9 @@ export class TokenController extends Controller {
             this.fail(error);
             throw error;
         }
-    }
+    };
 
-    public async tokenAllowance({
+    public tokenAllowance = async ({
         walletAddress,
         tokenAddress,
         network
@@ -79,7 +79,7 @@ export class TokenController extends Controller {
         walletAddress: string;
         tokenAddress: string;
         network: string;
-    }): Promise<string> {
+    }): Promise<string> => {
         try {
             const allowance = await this.getTokenAllowance.execute(
                 TokenAllowanceSerializer.toDomain({
@@ -94,9 +94,9 @@ export class TokenController extends Controller {
             this.fail(error);
             throw error;
         }
-    }
+    };
 
-    public async tokenBalance({
+    public tokenBalance = async ({
         walletAddress,
         tokenAddress,
         network
@@ -104,7 +104,7 @@ export class TokenController extends Controller {
         walletAddress: string;
         tokenAddress: string;
         network: string;
-    }): Promise<string> {
+    }): Promise<string> => {
         try {
             const balance = await this.getTokenBalance.execute(
                 TokenBalanceSerializer.toDomain({
@@ -118,9 +118,9 @@ export class TokenController extends Controller {
             this.fail(error);
             throw error;
         }
-    }
+    };
 
-    public async tokenMetadata({
+    public tokenMetadata = async ({
         symbol,
         network
     }: {
@@ -132,7 +132,7 @@ export class TokenController extends Controller {
         address: string;
         decimals: number;
         imageSource: string;
-    }> {
+    }> => {
         try {
             const token = await this.getTokenMetadata.execute(
                 TokenMetadataSerializer.toDomain({ symbol, network })
@@ -142,9 +142,9 @@ export class TokenController extends Controller {
             this.fail(error);
             throw error;
         }
-    }
+    };
 
-    public async tokenRate({
+    public tokenRate = async ({
         symbol,
         network
     }: {
@@ -153,7 +153,7 @@ export class TokenController extends Controller {
     }): Promise<{
         expected: string;
         slippage: string;
-    }> {
+    }> => {
         try {
             const rate = await this.getTokenRate.execute(
                 TokenRateSerializer.toDomain({ symbol, network })
@@ -163,5 +163,5 @@ export class TokenController extends Controller {
             this.fail(error);
             throw error;
         }
-    }
+    };
 }
