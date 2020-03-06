@@ -30,6 +30,8 @@
             "@services": ["domain/services"],
             "@services/*": ["domain/services/*"],
             "@infrastructure/*": ["infrastructure/*"],
+            "@api": ["infrastructure/api"],
+            "@api/*": ["infrastructure/api/*"],
             "@containers": ["infrastructure/containers"],
             "@containers/*": ["infrastructure/containers/*"],
             "@frameworks/*": ["infrastructure/frameworks/*"],
