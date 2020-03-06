@@ -9,6 +9,10 @@
         "resolveJsonModule": true,
         "baseUrl": "src",
         "paths": {
+            "@src": ["./"],
+            "@src/*": ["./*"],
+            "@adapters": ["adapters"],
+            "@adapters/*": ["adapters/*"],
             "@controllers": ["adapters/controllers"],
             "@controllers/*": ["adapters/controllers/*"],
             "@serializers": ["adapters/serializers"],
