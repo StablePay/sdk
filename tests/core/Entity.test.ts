@@ -65,7 +65,16 @@ describe('Entity Abstract class test', () => {
             const UID = new UniqueEntityID(100);
             const entity1 = new TestEntity('test', UID);
     
+            // @ts-ignore
             expect(entity1.equals(undefined)).toBe(false);
+        });
+
+        it('should NOT be equal if other is null', () => {
+            const UID = new UniqueEntityID(100);
+            const entity1 = new TestEntity('test', UID);
+        
+            // @ts-ignore
+            expect(entity1.equals(null)).toBe(false);
         });
 
         it('should NOT be equal if Entities are different', () => {

@@ -3,7 +3,7 @@ import { UniqueEntityID } from './UniqueEntityID';
 export abstract class AbstractEntity<T> {
     constructor(protected props: T, readonly _id: UniqueEntityID) {}
 
-    public equals(object?: AbstractEntity<T>): boolean {
+    public equals(object: AbstractEntity<T>): boolean {
         if (object === null || object === undefined) {
             return false;
         }
