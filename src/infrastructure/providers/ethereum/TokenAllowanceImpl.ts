@@ -3,8 +3,9 @@ import { EthereumAddress } from '@valueObjects';
 import { EthereumNetwork } from '@types';
 import { getContract } from '@frameworks/ethers';
 import { erc20 } from '@frameworks/ethereum/contracts';
+import { ApplicationError, ErrorType } from '@src/core';
 
-interface ITokenAllowanceImplProps {
+export interface ITokenAllowanceImplProps {
     walletAddress: EthereumAddress;
     tokenAddress: EthereumAddress;
     contractAddress: EthereumAddress;
@@ -23,6 +24,10 @@ export class TokenAllowanceImpl implements ITokenAllowanceService {
             walletAddress.value,
             contractAddress.value
         );
+
+        if (!allowance) {
+            throw new ApplicationError(ErrorType.Internal ,'TokenAllowanceImpl.execute Expected a valid allowance value');
+        }
 
         return allowance.toString();
     }
