@@ -1,4 +1,4 @@
-import { ValueObject } from '../../src/core/ValueObject';
+import { ValueObject } from '@core/ValueObject';
 
 interface IMyStringObj {
     value: string;

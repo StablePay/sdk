@@ -1,5 +1,5 @@
-import { AbstractEntity } from '../../src/core/Entity';
-import { UniqueEntityID  } from '../../src/core/UniqueEntityID';
+import { AbstractEntity } from '@core/Entity';
+import { UniqueEntityID  } from '@core/UniqueEntityID';
 
 // NOTE: we need a test entity to test the abstract methods
 class TestEntity extends AbstractEntity<string> {

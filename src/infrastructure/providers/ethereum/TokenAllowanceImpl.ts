@@ -23,6 +23,7 @@ export class TokenAllowanceImpl implements ITokenAllowanceService {
             walletAddress.value,
             contractAddress.value
         );
+
         return allowance.toString();
     }
 }

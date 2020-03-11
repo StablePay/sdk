@@ -1,6 +1,6 @@
-import { EthereumAddress } from '../../../../src/domain/models/valueObjects/EthereumAddress';
-import { ApplicationError } from '../../../../src/core/ApplicationError';
-import { ErrorType } from '../../../../src/core/ErrorTypes';
+import { EthereumAddress } from '@domain/models/valueObjects/EthereumAddress';
+import { ApplicationError } from '@core/ApplicationError';
+import { ErrorType } from '@core/ErrorTypes';
 
 describe('Ethereum Address Value Object', () => {
 
