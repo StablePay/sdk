@@ -6,11 +6,12 @@ interface IEthereumAddressProps {
 }
 
 export class EthereumAddress extends ValueObject<IEthereumAddressProps> {
-    public static create(props: IEthereumAddressProps): EthereumAddress {
+    public static of(address: string): EthereumAddress {
+        const props = { value: address };
         return new EthereumAddress(props);
     }
 
-    constructor(props: IEthereumAddressProps) {
+    private constructor(props: IEthereumAddressProps) {
         super(props);
 
         this.validate(props);

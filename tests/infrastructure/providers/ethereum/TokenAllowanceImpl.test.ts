@@ -29,9 +29,9 @@ describe('TokenAllowImpl', () => {
     beforeEach(() => {
         tokenAllowanceImpl = new TokenAllowanceImpl();
         props = {
-            tokenAddress: new EthereumAddress({ value: TOKEN_ADDRESS }),
-            walletAddress: new EthereumAddress({ value : WALLET_ADDRESS }),
-            contractAddress: new EthereumAddress({ value: CONTRACT_ADDRESS }),
+            tokenAddress: EthereumAddress.of(TOKEN_ADDRESS),
+            walletAddress: EthereumAddress.of(WALLET_ADDRESS),
+            contractAddress: EthereumAddress.of(CONTRACT_ADDRESS),
             network: EthereumNetwork.Mainnet,
         }
         setupMock(mockErc20Contract);
