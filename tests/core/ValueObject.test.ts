@@ -29,6 +29,7 @@ describe('Value Object', () => {
 
         expect(valObj).toBeDefined();
         expect(valObj.props).toEqual(stringObj);
+        expect(valObj.props.id).not.toEqual(mutableObj.id);
     });
 
     it('should equal an equivalent valueObject', () => {
