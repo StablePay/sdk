@@ -19,7 +19,7 @@ describe('Value Object', () => {
         const valObj = new TestStringValueObject(stringObj);
 
         expect(valObj).toBeDefined();
-        expect(valObj.Props).toEqual(stringObj);
+        expect(valObj.props).toEqual(stringObj);
     });
 
     it('should be an immutable valueObject', () => {
@@ -28,7 +28,7 @@ describe('Value Object', () => {
         mutableObj.id = 300;
 
         expect(valObj).toBeDefined();
-        expect(valObj.Props).toEqual(stringObj);
+        expect(valObj.props).toEqual(stringObj);
     });
 
     it('should equal an equivalent valueObject', () => {

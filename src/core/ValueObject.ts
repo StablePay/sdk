@@ -5,10 +5,10 @@ interface IValueObjectProps {
 }
 
 export abstract class ValueObject<T extends IValueObjectProps> {
-    protected readonly props: T;
+    protected readonly properties: T;
 
     constructor(props: T) {
-        this.props = Object.freeze({ ...props });
+        this.properties = Object.freeze({ ...props });
     }
 
     // NOTE: type checks saves doing null and undefined
@@ -16,7 +16,7 @@ export abstract class ValueObject<T extends IValueObjectProps> {
         return isEqual(this.props, vo.props);
     }
 
-    get Props() {
-        return this.props;
+    get props() {
+        return this.properties;
     }
 }
