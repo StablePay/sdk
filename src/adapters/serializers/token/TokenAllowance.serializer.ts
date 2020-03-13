@@ -14,9 +14,9 @@ export class TokenAllowanceSerializer {
         network: string;
     }) {
         return {
-            walletAddress: EthereumAddress.create({ value: walletAddress }),
-            tokenAddress: EthereumAddress.create({ value: tokenAddress }),
-            contractAddress: EthereumAddress.create({ value: contractAddress }),
+            walletAddress: EthereumAddress.of(walletAddress),
+            tokenAddress: EthereumAddress.of(tokenAddress),
+            contractAddress: EthereumAddress.of(contractAddress),
             network: network as EthereumNetwork
         };
     }

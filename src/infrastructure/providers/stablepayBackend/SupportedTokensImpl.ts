@@ -19,7 +19,7 @@ export class SupportedTokensImpl implements ISupportedTokensService {
                 new Token({
                     name,
                     symbol,
-                    address: new EthereumAddress({ value: address }),
+                    address: EthereumAddress.of(address),
                     decimals,
                     imageSource: icon
                 })

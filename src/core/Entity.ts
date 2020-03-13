@@ -1,13 +1,9 @@
 import { UniqueEntityID } from './UniqueEntityID';
 
-const isEntity = (v: any): v is Entity<any> => {
-    return v instanceof Entity;
-};
-
-export abstract class Entity<T> {
+export abstract class AbstractEntity<T> {
     constructor(protected props: T, readonly _id: UniqueEntityID) {}
 
-    public equals(object?: Entity<T>): boolean {
+    public equals(object: AbstractEntity<T>): boolean {
         if (object === null || object === undefined) {
             return false;
         }
@@ -15,8 +11,8 @@ export abstract class Entity<T> {
         if (this === object) {
             return true;
         }
-
-        if (!isEntity(object)) {
+        // check if both are same class entity
+        if (this.constructor !== object.constructor) {
             return false;
         }
 
