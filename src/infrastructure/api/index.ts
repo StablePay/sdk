@@ -3,5 +3,5 @@ import { IConfig } from '@config';
 import { ServicesContainer } from '@containers';
 
 export const getAPI = (config: IConfig, services: ServicesContainer) => {
-    return { ...getTokenAPI(config, services) };
+    return { Token: getTokenAPI(config, services) };
 };

@@ -17,14 +17,14 @@ describe('Library API', () => {
     });
 
     xit('Gets supported tokens', async () => {
-        const tokens = await stablepay.supportedTokens({
+        const tokens = await stablepay.Token.supportedTokens({
             network: config.ethereumNetwork
         });
         expect(tokens).toBeDefined();
     });
 
     xit('Gets the token allowance from wallet address to stablepays contract', async () => {
-        const allowance = await stablepay.tokenAllowance({
+        const allowance = await stablepay.Token.tokenAllowance({
             walletAddress: '0xAc79cE441D3252e44B430261193341278736A69B',
             tokenAddress: '0x4e470dc7321e84ca96fcaedd0c8abcebbaeb68c6',
             network: config.ethereumNetwork
@@ -33,7 +33,7 @@ describe('Library API', () => {
     });
 
     xit('Gets the token balance from wallet address', async () => {
-        const balance = await stablepay.tokenBalance({
+        const balance = await stablepay.Token.tokenBalance({
             walletAddress: '0xAc79cE441D3252e44B430261193341278736A69B',
             tokenAddress: '0x4e470dc7321e84ca96fcaedd0c8abcebbaeb68c6',
             network: config.ethereumNetwork
@@ -42,7 +42,7 @@ describe('Library API', () => {
     });
 
     xit('Gets a token metadata', async () => {
-        const token = await stablepay.tokenMetadata({
+        const token = await stablepay.Token.tokenMetadata({
             symbol: 'knc',
             network: config.ethereumNetwork
         });
@@ -50,7 +50,7 @@ describe('Library API', () => {
     });
 
     xit('Gets a token rate', async () => {
-        const rate = await stablepay.tokenRate({
+        const rate = await stablepay.Token.tokenRate({
             symbol: 'knc',
             network: config.ethereumNetwork
         });
