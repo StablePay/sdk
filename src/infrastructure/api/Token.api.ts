@@ -12,5 +12,11 @@ export const getTokenAPI = (config: IConfig, services: ServicesContainer) => {
         config
     );
 
-    return tokenController;
+    return {
+        supportedTokens: tokenController.supportedTokens,
+        tokenAllowance: tokenController.tokenAllowance,
+        tokenBalance: tokenController.tokenBalance,
+        tokenMetadata: tokenController.tokenMetadata,
+        tokenRate: tokenController.tokenRate
+    };
 };
