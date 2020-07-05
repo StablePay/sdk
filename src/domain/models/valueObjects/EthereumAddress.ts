@@ -6,22 +6,24 @@ interface IEthereumAddressProps {
 }
 
 export class EthereumAddress extends ValueObject<IEthereumAddressProps> {
-    public static create(props: IEthereumAddressProps): EthereumAddress {
-        this.validate(props);
+    public static of(address: string): EthereumAddress {
+        const props = { value: address };
         return new EthereumAddress(props);
     }
 
-    private static validate(props: IEthereumAddressProps) {
+    private constructor(props: IEthereumAddressProps) {
+        super(props);
+
+        this.validate(props);
+    }
+
+    private validate(props: IEthereumAddressProps) {
         const { value } = props;
         if (!isEthereumAddress(value))
             throw new ApplicationError(
                 ErrorType.Validation,
                 `'${value}' is not a valid Ethereum Address`
             );
-    }
-
-    constructor(props: IEthereumAddressProps) {
-        super(props);
     }
 
     get value(): string {

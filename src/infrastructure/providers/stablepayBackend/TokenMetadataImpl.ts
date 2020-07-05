@@ -17,7 +17,7 @@ export class TokenMetadataImpl implements ITokenMetadataService {
         return new Token({
             name,
             symbol,
-            address: EthereumAddress.create({ value: address }),
+            address: EthereumAddress.of(address),
             decimals,
             imageSource
         });
