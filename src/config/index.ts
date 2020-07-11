@@ -1,6 +1,6 @@
 export interface IConfig {
     ethereumNetwork: string;
-    stablepayBackendAPI: string;
+    backendUrl: string;
     stablepayContractAddress: string;
     signature: string;
 }

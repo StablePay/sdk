@@ -4,10 +4,17 @@ import {
     ITokenBalanceService,
     ITokenMetadataService,
     ITokenRateService,
-    ITransactionOrderService
+    ITransactionOrderService,
+    ITokenBalancesService,
+    ITokenAllowancesService,
 } from '@services';
 
-import { TokenAllowanceImpl, TokenBalanceImpl } from '@providers/ethereum';
+import {
+    TokenAllowanceImpl,
+    TokenBalanceImpl,
+    TokenBalancesImpl,
+    TokenAllowancesImpl
+} from '@providers/ethereum';
 
 import {
     SupportedTokensImpl,
@@ -17,19 +24,23 @@ import {
 } from '@providers/stablepayBackend';
 
 export class ServicesContainer {
-    public readonly supportedTokensImpl: ISupportedTokensService;
-    public readonly tokenAllowanceImpl: ITokenAllowanceService;
-    public readonly tokenBalanceImpl: ITokenBalanceService;
-    public readonly tokenMetadataImpl: ITokenMetadataService;
-    public readonly tokenRateImpl: ITokenRateService;
-    public readonly transactionOrderImpl: ITransactionOrderService;
+    public readonly supportedTokensService: ISupportedTokensService;
+    public readonly tokenAllowanceService: ITokenAllowanceService;
+    public readonly tokenAllowancesService: ITokenAllowancesService;
+    public readonly tokenBalanceService: ITokenBalanceService;
+    public readonly tokenBalancesService: ITokenBalancesService;
+    public readonly tokenMetadataService: ITokenMetadataService;
+    public readonly tokenRateService: ITokenRateService;
+    public readonly transactionOrderService: ITransactionOrderService;
 
     constructor() {
-        this.supportedTokensImpl = new SupportedTokensImpl();
-        this.tokenAllowanceImpl = new TokenAllowanceImpl();
-        this.tokenBalanceImpl = new TokenBalanceImpl();
-        this.tokenMetadataImpl = new TokenMetadataImpl();
-        this.tokenRateImpl = new TokenRateImpl();
-        this.transactionOrderImpl = new TransactionOrderImpl();
+        this.supportedTokensService = new SupportedTokensImpl();
+        this.tokenAllowanceService = new TokenAllowanceImpl();
+        this.tokenAllowancesService = new TokenAllowancesImpl();
+        this.tokenBalanceService = new TokenBalanceImpl();
+        this.tokenBalancesService = new TokenBalancesImpl();
+        this.tokenMetadataService = new TokenMetadataImpl();
+        this.tokenRateService = new TokenRateImpl();
+        this.transactionOrderService = new TransactionOrderImpl();
     }
 }

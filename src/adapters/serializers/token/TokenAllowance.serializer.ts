@@ -5,19 +5,19 @@ export class TokenAllowanceSerializer {
     public static toDomain({
         walletAddress,
         tokenAddress,
-        contractAddress,
+        spenderAddress,
         network
     }: {
         walletAddress: string;
         tokenAddress: string;
-        contractAddress: string;
+        spenderAddress: string;
         network: string;
     }) {
         return {
             walletAddress: EthereumAddress.of(walletAddress),
             tokenAddress: EthereumAddress.of(tokenAddress),
-            contractAddress: EthereumAddress.of(contractAddress),
-            network: network as EthereumNetwork
+            spenderAddress: EthereumAddress.of(spenderAddress),
+            network: EthereumNetwork.of(network),
         };
     }
 

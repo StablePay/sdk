@@ -5,34 +5,45 @@ import {
     GetTokenAllowance,
     GetTokenBalance,
     GetTokenMetadata,
-    GetTokenRate
+    GetTokenRate,
+    GetTokenBalances,
+    GetTokenAllowances
 } from '@useCases/token';
 import {
     ISupportedTokensService,
     ITokenAllowanceService,
     ITokenBalanceService,
     ITokenMetadataService,
-    ITokenRateService
+    ITokenRateService,
+    ITokenAllowancesService,
+    ITokenBalancesService
 } from '@services';
 import {
     SupportedTokensSerializer,
     TokenAllowanceSerializer,
     TokenBalanceSerializer,
+    TokenBalancesSerializer,
     TokenMetadataSerializer,
     TokenRateSerializer
 } from '@serializers/token';
+import { TokenAllowancesSerializer } from '../serializers/token/TokenAllowances.serializer';
+import { TokenAllowancesArray, TokenBalancesArray } from '@src/domain/models/types';
 
 export class TokenController extends Controller {
     private getSupportedTokens: GetSupportedTokens;
     private getTokenAllowance: GetTokenAllowance;
+    private getTokenAllowances: GetTokenAllowances;
     private getTokenBalance: GetTokenBalance;
+    private getTokenBalances: GetTokenBalances;
     private getTokenMetadata: GetTokenMetadata;
     private getTokenRate: GetTokenRate;
 
     constructor(
         supportedTokensImpl: ISupportedTokensService,
         tokenAllowanceImpl: ITokenAllowanceService,
+        tokenAllowancesImpl: ITokenAllowancesService,
         tokenBalanceImpl: ITokenBalanceService,
+        tokenBalancesImpl: ITokenBalancesService,
         tokenMetadataImpl: ITokenMetadataService,
         tokenRateImpl: ITokenRateService,
         private config: IConfig
@@ -40,7 +51,9 @@ export class TokenController extends Controller {
         super();
         this.getSupportedTokens = new GetSupportedTokens(supportedTokensImpl);
         this.getTokenAllowance = new GetTokenAllowance(tokenAllowanceImpl);
+        this.getTokenAllowances = new GetTokenAllowances(tokenAllowancesImpl);
         this.getTokenBalance = new GetTokenBalance(tokenBalanceImpl);
+        this.getTokenBalances = new GetTokenBalances(tokenBalancesImpl);
         this.getTokenMetadata = new GetTokenMetadata(tokenMetadataImpl);
         this.getTokenRate = new GetTokenRate(tokenRateImpl);
     }
@@ -85,11 +98,36 @@ export class TokenController extends Controller {
                 TokenAllowanceSerializer.toDomain({
                     walletAddress,
                     tokenAddress,
-                    contractAddress: this.config.stablepayContractAddress,
+                    spenderAddress: this.config.stablepayContractAddress,
                     network
                 })
             );
             return this.success(TokenAllowanceSerializer.toDTO(allowance));
+        } catch (error) {
+            this.fail(error);
+            throw error;
+        }
+    };
+
+    public tokenAllowances = async ({
+        walletAddress,
+        tokenAddresses,
+        network
+    }: {
+        walletAddress: string;
+        tokenAddresses: string[];
+        network: string;
+    }): Promise<TokenAllowancesArray> => {
+        try {
+            const allowances = await this.getTokenAllowances.execute(
+                TokenAllowancesSerializer.toDomain({
+                    walletAddress,
+                    tokenAddresses,
+                    spenderAddress: this.config.stablepayContractAddress,
+                    network
+                })
+            );
+            return this.success(TokenAllowancesSerializer.toDTO(allowances));
         } catch (error) {
             this.fail(error);
             throw error;
@@ -114,6 +152,30 @@ export class TokenController extends Controller {
                 })
             );
             return this.success(TokenBalanceSerializer.toDTO(balance));
+        } catch (error) {
+            this.fail(error);
+            throw error;
+        }
+    };
+
+    public tokenBalances = async ({
+        walletAddress,
+        tokenAddresses,
+        network
+    }: {
+        walletAddress: string;
+        tokenAddresses: string[];
+        network: string;
+    }): Promise<TokenBalancesArray> => {
+        try {
+            const balances = await this.getTokenBalances.execute(
+                TokenBalancesSerializer.toDomain({
+                    walletAddress,
+                    tokenAddresses,
+                    network
+                })
+            );
+            return this.success(TokenBalancesSerializer.toDTO(balances));
         } catch (error) {
             this.fail(error);
             throw error;

@@ -6,7 +6,7 @@ import { EthereumNetwork } from '@types';
 interface IGetTokenAllowanceProps {
     walletAddress: EthereumAddress;
     tokenAddress: EthereumAddress;
-    contractAddress: EthereumAddress;
+    spenderAddress: EthereumAddress;
     network: EthereumNetwork;
 }
 

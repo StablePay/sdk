@@ -1,7 +1,7 @@
 {
-    "name": "@stablepay/stablepayjs",
-    "version": "1.0.0",
-    "description": "StablePay JavaScript Library",
+    "name": "@stablepay/sdk",
+    "version": "1.0.6",
+    "description": "Official StablePay SDK",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     },
     "homepage": "https://stablepay.io/",
     "author": "https://stablepay.io/about",
-    "repository": "https://github.com/StablePay/StablePayJS",
+    "repository": "https://github.com/StablePay/sdk",
     "license": "MIT",
     "publishConfig": {
         "access": "public"
