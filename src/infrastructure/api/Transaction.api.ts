@@ -7,7 +7,7 @@ export const getTransactionAPI = (
     services: ServicesContainer
 ) => {
     const transactionController = new TransactionController(
-        services.transactionOrderImpl,
+        services.transactionOrderService,
         config
     );
 
