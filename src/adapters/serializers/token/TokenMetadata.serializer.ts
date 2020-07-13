@@ -9,7 +9,7 @@ export class TokenMetadataSerializer {
         symbol: string;
         network: string;
     }) {
-        return { symbol, network: network as EthereumNetwork };
+        return { symbol, network: EthereumNetwork.of(network) };
     }
 
     public static toDTO(

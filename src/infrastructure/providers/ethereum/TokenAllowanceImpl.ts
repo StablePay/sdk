@@ -8,13 +8,13 @@ import { ApplicationError, ErrorType } from '@src/core';
 export interface ITokenAllowanceImplProps {
     walletAddress: EthereumAddress;
     tokenAddress: EthereumAddress;
-    contractAddress: EthereumAddress;
+    spenderAddress: EthereumAddress;
     network: EthereumNetwork;
 }
 
 export class TokenAllowanceImpl implements ITokenAllowanceService {
     public async execute(props: ITokenAllowanceImplProps): Promise<string> {
-        const { walletAddress, tokenAddress, contractAddress, network } = props;
+        const { walletAddress, tokenAddress, spenderAddress, network } = props;
         const erc20Contract = getContract(
             tokenAddress.value,
             erc20.abi,
@@ -22,7 +22,7 @@ export class TokenAllowanceImpl implements ITokenAllowanceService {
         );
         const allowance = await erc20Contract.allowance(
             walletAddress.value,
-            contractAddress.value
+            spenderAddress.value
         );
 
         if (!allowance) {

@@ -4,7 +4,7 @@ jest.setTimeout(20000);
 
 const config = {
     ethereumNetwork: 'ropsten',
-    stablepayBackendAPI: 'https://ropsten.api.stablepay.io/api',
+    backendUrl: 'https://ropsten.api.stablepay.io/api',
     stablepayContractAddress: '0x494ff097f8d4E9C3b2316E3cEC49623bE98B5125',
     signature: 'secret'
 };

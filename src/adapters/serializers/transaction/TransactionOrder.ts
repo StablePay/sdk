@@ -25,7 +25,7 @@ export class TransactionOrderSerializer {
             targetTokenAddress: EthereumAddress.of(obj.targetTokenAddress),
             amount: obj.amount,
             postAction: obj.postAction,
-            network: config.ethereumNetwork as EthereumNetwork
+            network: EthereumNetwork.of(config.ethereumNetwork)
         };
     }
 

@@ -3,7 +3,7 @@ import { EthereumNetwork } from '@types';
 
 export class SupportedTokensSerializer {
     public static toDomain({ network }: { network: string }) {
-        return { network: network as EthereumNetwork };
+        return { network: EthereumNetwork.of(network) };
     }
 
     public static toDTO(
