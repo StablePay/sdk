@@ -5,7 +5,7 @@ import { EthereumNetwork } from '@types';
 interface ITokenAllowanceServiceProps {
     walletAddress: EthereumAddress;
     tokenAddress: EthereumAddress;
-    contractAddress: EthereumAddress;
+    spenderAddress: EthereumAddress;
     network: EthereumNetwork;
 }
 

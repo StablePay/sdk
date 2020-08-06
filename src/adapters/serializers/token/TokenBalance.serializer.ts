@@ -14,7 +14,7 @@ export class TokenBalanceSerializer {
         return {
             walletAddress: EthereumAddress.of(walletAddress),
             tokenAddress: EthereumAddress.of(tokenAddress),
-            network: network as EthereumNetwork
+            network: EthereumNetwork.of(network)
         };
     }
 

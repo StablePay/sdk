@@ -31,7 +31,7 @@ describe('TokenAllowImpl', () => {
         props = {
             tokenAddress: EthereumAddress.of(TOKEN_ADDRESS),
             walletAddress: EthereumAddress.of(WALLET_ADDRESS),
-            contractAddress: EthereumAddress.of(CONTRACT_ADDRESS),
+            spenderAddress: EthereumAddress.of(CONTRACT_ADDRESS),
             network: EthereumNetwork.Mainnet,
         }
         setupMock(mockErc20Contract);
@@ -54,7 +54,7 @@ describe('TokenAllowImpl', () => {
         );
         expect(mockErc20Contract.allowance).toBeCalledWith(
             props.walletAddress.value,
-            props.contractAddress.value
+            props.spenderAddress.value
         );
     });
 
